@@ -17,13 +17,15 @@ export const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/news"),
+        loader: () => fetch("https://mrx-news-serverside.vercel.app/news"),
       },
       {
         path: "/category/:id",
         element: <Category></Category>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/categories/${params.id}`),
+          fetch(
+            `https://mrx-news-serverside.vercel.app/categories/${params.id}`
+          ),
       },
       {
         path: "/news/:id",
@@ -32,8 +34,7 @@ export const routes = createBrowserRouter([
             <News></News>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/news/${params.id}`),
+        loader: ({ params }) => fetch(`/${params.id}`),
       },
       {
         path: "/login",
